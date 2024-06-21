@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function formvalues(event){
+            event.preventDefault();
+            let weight = document.getElementById('weight').value;
+            let height = document.getElementById('height').value;
+            let BMI = weight/(height*height)
+            document.getElementById("BMI").innerText = BMI.toFixed(2);
+            if(BMI<=18.4){
+                document.getElementById("status").innerText ="Underweight"
+                document.getElementById("picture").src="https://www.shutterstock.com/shutterstock/photos/1329921086/display_1500/stock-vector-illustration-of-an-underweight-man-in-skin-and-bones-1329921086.jpg"
+            }
+            else if(BMI>=18.5 && BMI<=24.9){
+                document.getElementById("status").innerText ="Normal"
+                document.getElementById("picture").src="https://www.goerie.com/gcdn/authoring/2014/12/21/NETN/ghows-PA-31b5122f-55f1-4d2c-bc52-cee958bf5bfd-7fd722ea.jpeg?width=600&height=802&fit=crop&format=pjpg&auto=webp"
+
+            }
+            else if(BMI>=25.0 && BMI<=39.9){
+                document.getElementById("status").innerText ="Overweight"
+                document.getElementById("picture").src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/msnbc/Components/Photos/051229/051229_overweightkid_hmed_12p.jpg"
+            }
+            else{
+                document.getElementById("status").innerText ="Obese"
+                document.getElementById("picture").src="https://nypost.com/wp-content/uploads/sites/2/2023/01/five-year-stop-eating-babygate-02.jpg?resize=1225,1536&quality=75&strip=all"
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Taking form values in JavaScript</h1>
+    <form onsubmit="formvalues(event)">
+        <label>Please your weight in kg</label>
+        <input id="weight" type="number" step="0.01" min="0" max="200"><br>
+        <label>Please enter your height in meters squared</label>
+        <input type="number" id="height" step="0.01" min="0" max="11"><br>
+        <input type="submit">
+    </form>
+    <h2>Your BMI is <span id="BMI"></span></h2>
+    <h2>Your status is <span id="status"></span></h2>
+    <img id="picture" src="https://static.vecteezy.com/system/resources/previews/000/372/496/original/little-boy-and-healthy-food-on-table-vector.jpg" alt="Healthy BOy" width="250" height="300" 
+</body>
+</html>
